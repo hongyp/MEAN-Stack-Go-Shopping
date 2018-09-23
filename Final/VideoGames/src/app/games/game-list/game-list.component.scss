@@ -1,0 +1,101 @@
+.outerpadding{
+  padding:3% 0%;}
+.boximg{
+  position:relative;
+  overflow:hidden;
+}
+
+.boximg img{
+  transition:all ease-in 500ms;
+  border:1px solid #fff;
+  height: 150px;
+  width: 100%;
+}
+
+
+.boximg img:hover{
+  transform:scale(1.3,1.3);
+  cursor:pointer;
+
+}
+
+.boximg:hover{
+   border:1px #fff;
+ }
+
+.date{
+  left: 0;
+  position: absolute;
+  top: 15px;
+  padding:5px;
+  background-color:teal;
+  opacity:0;
+  transition:all ease-in 300ms;
+
+}
+
+.likebut{
+  background: none repeat scroll 0 0 teal;
+  height: 25px;
+  padding: 7px;
+  position: absolute;
+  right: 5px;
+  top: 130px;
+  width: 25px;
+  opacity:0.4;
+  transition:all ease-in 300ms;
+}
+
+
+.boximg:hover .date{
+  opacity:1;
+
+}
+.boximg:hover .likebut{
+  opacity:1;
+
+}
+
+pagination-controls /deep/ .ng2-pagination .current {
+  font-size: large;
+  font-weight: bold;
+  //color: #b53525;
+  background: teal;
+  border-radius: 3px;
+}
+
+//pagination-controls /deep/ .ng2-pagination li {
+//  font-weight: bold;
+//  font-size: 16px;
+//  font-family: $font-stack;
+//  padding: 8px 16px;
+//  border: 1px solid lighten(black, 15%);
+//  border-radius: 3px;
+//  box-shadow: 0 0 6px rgba(black, 0.6), inset 0 1px rgba(white, .4);
+//  color: $link-color;
+//  text-decoration: none;
+//  text-shadow: $inset-text;
+//}
+
+pagination-controls /deep/ .ng2-pagination a:hover{
+  border-radius: 2px;
+}
+
+pagination-controls /deep/ .ng2-pagination a{
+  color: white;
+}
+//default css style , use "pagination-controls /deep/" to change it
+.ng2-pagination::before,.ng2-pagination::after {    content:' ';    display:table;}
+.ng2-pagination::after {    clear:both;}
+.ng2-pagination li {    -moz-user-select:none;    -webkit-user-select:none;    -ms-user-select:none;    font-size:0.875rem;    margin-right:0.0625rem;    border-radius:0;}
+.ng2-pagination li {    display:inline-block;}
+.ng2-pagination a,.ng2-pagination button {    color:#0a0a0a;    display:block;    padding:0.1875rem 0.625rem;    border-radius:0;    cursor:pointer;    }
+.ng2-pagination a:hover,.ng2-pagination button:hover {    background:#e6e6e6;    cursor:pointer;    }
+.ng2-pagination .current {    padding:0.1875rem 0.625rem;    background:#2199e8;    color:#fefefe;    cursor:default;}
+.ng2-pagination .disabled {    padding:0.1875rem 0.625rem;    color:#cacaca;    cursor:default;}
+.ng2-pagination .disabled:hover {    background:transparent;}
+.ng2-pagination .ellipsis::after {    content:'\u2026';    padding:0.1875rem 0.625rem;    color:#0a0a0a;}
+.ng2-pagination .pagination-previous a::before,.ng2-pagination .pagination-previous.disabled::before {    content:'\u00AB';    display:inline-block;    margin-right:0.5rem;}
+.ng2-pagination .pagination-next a::after,.ng2-pagination .pagination-next.disabled::after {    content:'\u00BB';    display:inline-block;    margin-left:0.5rem;}
+.ng2-pagination .show-for-sr {    position:absolute !important;    width:1px;    height:1px;    overflow:hidden;    clip:rect(0,0,0,0);}
+

@@ -1,0 +1,85 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">VG-SHOP</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active" [class.active]="isActive('/')" (click)="notRefresh()">
+          <a routerLink="home">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item" [class.active]="isActive('/games')">
+          <a class="nav-link" routerLink="games">Games</a>
+        </li>
+        <!-- <li class="nav-item" [class.active]="isActive('/cart')">
+          <a class="nav-link" routerLink="cart"><i class="fa fa-2x fa-shopping-cart"></i></a>
+          <span  class="cart-items-count"><span class=" notification-counter">3</span></span>
+        </li> -->
+      </ul>
+<!-- mini cart part  -->
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown" [class.active]="isActive('/cart')">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-shopping-cart"></span>
+             {{ cartLen }} - Items<span class="caret"></span></a>
+             <ul class="dropdown-menu dropdown-cart" role="menu">
+                <li>
+                  <span class="item" *ngFor="let item of cartList; let i = index;">
+                    <span class="item-left">
+                      <!-- <img src="{{item.game.img}}" alt="" /> -->
+                        <span class="item-info">
+                          <span>{{ item.game.title }}</span>
+                          <span>{{ item.game.price }}$</span>
+                        </span>
+                    </span>
+                    <!-- <span class="item-right">
+                      <button class="btn btn-xs btn-success pull-right">x</button>
+                    </span> -->
+                  </span>
+                </li>
+                <li class="divider"></li>
+                <li><a class="text-center" (click)="refresh()">Refresh Cart</a></li>
+                <li><a class="text-center" (click)="submitCurrentCart()" routerLink="cart">View Cart</a></li>
+             </ul>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <!-- <li class="nav-item" [class.active]="isActive('/signup')">
+          <a class="nav-link" routerLink="signup">Signup</a>
+        </li> -->
+        <li class="nav-item" *ngIf="isLoggin">
+            <a>Welcome, {{ userName }}</a>
+          </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-user-circle fa-lg" aria-hidden="true"></i> <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+              <li class="nav-item" [class.active]="isActive('/login')">
+                <a class="nav-link" routerLink="login"><i class="fa fa-sign-in"></i> Log in</a>
+              </li>
+              <li class="nav-item" [class.active]="isActive('/account')">
+                <a class="nav-link" routerLink="account"><i class="fa fa-history"></i> Order History</a>
+              </li>
+              <li class="nav-item" [class.active]="isActive('/account/information')">
+                <a class="nav-link" routerLink="account/information"><i class="fa fa-pencil-square-o"></i> Edit Information</a>
+              </li>
+              <li class="nav-item" [class.active]="isActive('/wishlist')">
+                <a class="nav-link" routerLink="wishlist"><i class="fa fa-list-ul"></i> Wishlist</a>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#"><i class="fa fa-sign-out"></i>Log out</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

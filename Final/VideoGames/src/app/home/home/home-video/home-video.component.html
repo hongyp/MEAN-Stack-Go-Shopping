@@ -1,0 +1,45 @@
+<div>
+  <!-- row -->
+
+  <div class="Title">
+
+    <a class="a-title">Top Seller</a>
+
+      <!--<div class="video-title-1"></div> Top Seller-->
+
+  </div>
+
+  <div>
+
+    <!-- row -->
+    <!-- main left image -->
+    <div class="col-md-6 nopadding b-padding video-container image-large">
+        <!-- <iframe class="youtube-video" src="https://www.youtube.com/embed/XHrskkHf958" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe> -->
+      <iframe class="youtube-video" [src]='sanitizer.bypassSecurityTrustResourceUrl(game.video)' frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+    </div>
+    <!-- end of other main image -->
+    <div class="col-md-6 nopadding b-padding">
+      <a>
+        <div class="square img_1-1 home-block" routerLink="../games/detail/{{game.id}}">
+          <div class="text">{{game.title}}</div>
+        </div>
+      </a>
+      <a>
+        <div class="square img_1-2 home-block" routerLink="../games/detail/{{game.id}}">
+          <div class="text">Score:{{game.score}}</div>
+        </div>
+      </a>
+      <!-- 2nd row verticaly centered images in square columns -->
+      <a>
+        <div class="square img_2-1 home-block" routerLink="../games/detail/{{game.id}}">
+          <div class="text">{{game.platform}}</div>
+        </div>
+      </a>
+      <a>
+        <div class="square img_2-2 home-block" routerLink="../games/detail/{{game.id}}">
+          <div class="text">{{ game.releaseYear }}.{{ game.releaseMonth }}.{{ game.releaseDay }}</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

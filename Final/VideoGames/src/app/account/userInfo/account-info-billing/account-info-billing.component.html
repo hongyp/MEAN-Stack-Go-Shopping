@@ -1,0 +1,224 @@
+<div class="container">
+    <div class="content">
+        <div class="left col-md-3">
+            <ul class="nav nav-pills nav-stacked admin-menu">
+                <li><a routerLink="../../information"><i class="fa fa-user fa-fw"></i> Contact Information</a></li>
+                <li><a routerLink="../payment"><i class="fa fa-list-alt fa-fw"></i> Payment Method</a></li>
+                <li class="active"><a><i class="fa fa-file-o fa-fw"></i> Billing Address</a></li>
+                <li><a routerLink="../setting"><i class="fa fa-cogs fa-fw"></i> Account Settings</a></li>
+            </ul>
+        </div>
+
+        <div class="right col-md-9">
+            <div class="well" id="billing-info-view">
+                <div class="row" id="row1">
+                    <div class="col-xs-6 col-md-6" id="form_left">
+                        <label class="col-md-4">First Name</label>
+                        <p class="col-md-4">{{billingInfo.firstName}}</p>
+                    </div>
+                    <div class="col-xs-6 col-md-6" id="form_right">
+                        <label class="col-md-4">Last Name</label>
+                        <p class="col-md-4">{{billingInfo.lastName}}</p>
+                    </div>
+                </div>
+
+                <div class="row" id="row2">
+                    <div class="col-xs-6 col-md-6" id="form_left">
+                        <label class="col-md-4">Address Line1</label>
+                        <p class="col-md-4">{{billingInfo.billingAddress1}}</p>
+                    </div>
+                    <div class="col-xs-6 col-md-6" id="form_right">
+                        <label class="col-md-4">City</label>
+                        <p class="col-md-4">{{billingInfo.city}}</p>
+                    </div>
+                </div>
+
+                <div class="row" id="row3">
+                    <div class="col-xs-6 col-md-6" id="form_left">
+                        <label class="col-md-4">Address Line2</label>
+                        <p class="col-md-4">{{billingInfo.billingAddress2}}</p>
+                    </div>
+                    <div class="col-xs-6 col-md-6" id="form_right">
+                        <label class="col-md-4">State</label>
+                        <p class="col-md-4">{{billingInfo.state}}</p>
+                    </div>
+                </div>
+
+                <div class="row" id="row4">
+                    <div class="col-xs-6 col-md-6" id="form_left">
+                        <label class="col-md-4">Zip Code</label>
+                        <p class="col-md-4">{{billingInfo.zipCode}}</p>
+                    </div>
+                    <div class="col-xs-6 col-md-6" id="form_right">
+                        <label class="col-md-4">Country</label>
+                        <p class="col-md-4">{{billingInfo.country}}</p>
+                    </div>
+                </div>
+
+                <div class="row" id="row5">
+                    <div class="col-xs-6 col-md-6" id="form_left">
+                        <label class="col-md-4">Phone</label>
+                        <p class="col-md-4">{{billingInfo.phoneNumber}}</p>
+                    </div>
+                    <div class="col-xs-6 col-md-6" id="form_right">
+                        <!-- <label class="col-md-4">State</label>
+                        <p class="col-md-4">"user.billingAddress.state"</p> -->
+                    </div>
+                </div>
+
+                <button class="btn btn-primary submit-button" type="button" (click)="editClick()">Edit</button>
+            </div>
+
+            <!-- edit information -->
+            <div class="well" id="billing-info-edit" *ngIf="editBtnIsClick">
+                <form class="form-billinginfo" #billingForm="ngForm">
+                    <h3 class="text-center">Update my billing address</h3>
+                        <div class="row" id="row-1">
+                            <div class="col-md-6" id="form_left">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                        <input type="text" class="form-control name-input" placeholder="First Name" required
+                                        name="firstName" [(ngModel)]="newBillingInfo.firstName"
+                                               #firstName ="ngModel" required pattern="^([a-zA-Z]{3,30}\s*)+$">
+                                      <div *ngIf="firstName.dirty && firstName.invalid" class="alert alert-danger">
+                                        Please input First Name correctly
+                                      </div>
+                                        <input type="text" class="form-control name-input" placeholder="Last Name" required
+                                        name="lastName" [(ngModel)]="newBillingInfo.lastName"
+                                               #lastName ="ngModel" required pattern="^([a-zA-Z]{3,30}\s*)+$">
+                                      <div *ngIf="lastName.dirty && lastName.invalid" class="alert alert-danger">
+                                        Please input Last Name correctly
+                                      </div>
+                                            <!-- <div *ngIf="formErrors.firstName" class="alert alert-danger">
+                                                {{formErrors.firstName}}
+                                            </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6" id="form_right">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
+                                        <input type="text" class="form-control" placeholder="Phone Number" required
+                                        name="phone" [(ngModel)]="newBillingInfo.phoneNumber" #phoneNumber ="ngModel" required pattern="^[0-9]*$">
+                                      <div *ngIf="phoneNumber.dirty && phoneNumber.invalid" class="alert alert-danger">
+                                        Please input Phone Number correctly
+                                      </div>
+                                            <!-- <div *ngIf="formErrors.lastName" class="alert alert-danger">
+                                                {{formErrors.lastName}}
+                                            </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" id="row-2">
+                            <div class="col-md-6" id="form_left">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-home"></span></span>
+                                        <input type="text" class="form-control" placeholder="Address Line1" required
+                                        name="line1" [(ngModel)]="newBillingInfo.billingAddress1"
+                                               #billingAddress1 ="ngModel" required pattern="^^(?=.*\d)[a-zA-Z\s\d\/]+$">
+                                      <div *ngIf="billingAddress1.dirty && billingAddress1.invalid" class="alert alert-danger">
+                                        Please input Address correctly
+                                      </div>
+                                            <!-- <div *ngIf="formErrors.email" class="alert alert-danger">
+                                                {{formErrors.email}}
+                                            </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6" id="form_right">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-home"></span></span>
+                                        <input type="text" class="form-control" placeholder="Address Line2" required
+                                        name="line2" [(ngModel)]="newBillingInfo.billingAddress2"
+                                               #billingAddress2 ="ngModel" required pattern="^([a-zA-Z]{3,30}\s*)+$">
+                                      <div *ngIf="billingAddress2.dirty && billingAddress2.invalid" class="alert alert-danger">
+                                        Please input Address correctly
+                                      </div>
+                                            <!-- <div *ngIf="formErrors.phone" class="alert alert-danger">
+                                                {{formErrors.phone}}
+                                            </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" id="row-3">
+                            <div class="col-md-6" id="form_left">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                        <input type="text" class="form-control" placeholder="City" required
+                                        name="city" [(ngModel)]="newBillingInfo.city"
+                                               #city ="ngModel" required pattern="^([a-zA-Z]{3,30}\s*)+$">
+                                      <div *ngIf="city.dirty && city.invalid" class="alert alert-danger">
+                                        Please input City Name correctly
+                                      </div>
+                                            <!-- <div *ngIf="formErrors.dob" class="alert alert-danger">
+                                                {{formErrors.dob}}
+                                            </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6" id="form_right">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></span>
+                                        <select id="country" required name="country" [(ngModel)]="newBillingInfo.country"  class="form-control" required>
+                                            <option>Please Select Country...</option>
+                                            <option *ngFor="let country of countryLookupList" [value]="country.name">
+                                                {{country.name}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" id="row-4">
+                            <div class="col-md-6" id="form_left">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-map-marker"></span></span>
+                                        <input type="text" class="form-control" placeholder="zip code" required
+                                        name="zipCode" [(ngModel)]="newBillingInfo.zipCode"
+                                               #zipCode ="ngModel" required pattern="^[0-9]*$">
+                                      <div *ngIf="zipCode.dirty && zipCode.invalid" class="alert alert-danger">
+                                        Please input Zip Code correctly
+                                      </div>
+                                            <!-- <div *ngIf="formErrors.dob" class="alert alert-danger">
+                                                    {{formErrors.dob}}
+                                            </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6" id="form_right">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-record"></span></span>
+                                        <input type="text" class="form-control" placeholder="state" required
+                                        name="state" [(ngModel)]="newBillingInfo.state"
+                                               #state ="ngModel" required pattern="^([a-zA-Z]{3,30}\s*)+$">
+                                      <div *ngIf="state.dirty && state.invalid" class="alert alert-danger">
+                                        Please input Country Name correctly
+                                      </div>
+                                            <!-- <div *ngIf="formErrors.age" class="alert alert-danger">
+                                                {{formErrors.age}}
+                                            </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-success submit-button" type="submit" [disabled]="billingForm.form.invalid" (click)="saveClick()">Save</button>
+                    </form>
+                </div>
+
+        </div>
+    </div>
+  </div>

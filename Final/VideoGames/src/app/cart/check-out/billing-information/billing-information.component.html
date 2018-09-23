@@ -1,0 +1,133 @@
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 id="billing_header_title" class="panel-title" style="display:block;">Billing Information</h3>
+            <div class="checkbox pull-right">
+                <label><input type="checkbox" [checked]="billingAddressInfo.rememberInfo" (change)="rememberForm()"/>Remember</label>
+            </div>
+        </div>
+  
+        <div class="panel-body">
+            <form #billingAddressFrom="ngForm" (submit)="createBillingAddress()">
+              <!-- row one -->
+                <div class="row" id="billing_row_one">
+                    <div class="col-xs-6 col-md-6" id="form_left">
+                        <div class="form-group">
+                          <div class="col-xs-6 col-md-6" id="first_name">
+                              <label for="firstName" id="first_name_label">First Name</label>
+                              <input type="text" class="form-control" maxlength="10" id="first_name" value autocomplete="cc-given-name"
+                                     name="firstName" [(ngModel)]="billingAddressInfo.firstName"
+                              #firstName ="ngModel" required pattern="^([a-zA-Z]{3,30}\s*)+$">
+                            <div *ngIf="firstName.dirty && firstName.invalid" class="alert alert-danger">
+                              Please input First Name correctly
+                            </div>
+                          </div>
+                          <div class="col-xs-6 col-md-6" id="last_name">
+                              <label for="lastName" id="last_name_label">Last Name</label>
+                              <input type="text" required class="form-control" maxlength="10" id="last_name" value autocomplete="cc-family-name"
+                                     name="lastName" [(ngModel)]="billingAddressInfo.lastName"
+                                     #lastName ="ngModel" required pattern="^([a-zA-Z]{3,30}\s*)+$">
+                            <div *ngIf="lastName.dirty && lastName.invalid" class="alert alert-danger">
+                              Please input Last Name correctly
+                            </div>
+                          </div>
+  
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-md-6" id="form_right">
+                        <label id="billing_city_label" for="city">City</label>
+                        <input type="text" required class='form-control' maxlength="50" name="billing_city" id="billing_city" value autocomplete="address-level2"
+                               name="city" [(ngModel)]="billingAddressInfo.city"
+                               #city ="ngModel" required pattern="^([a-zA-Z]{3,30}\s*)+$">
+                      <div *ngIf="city.dirty && city.invalid" class="alert alert-danger">
+                        Please input City Name correctly
+                      </div>
+                    </div>
+                </div>
+                <br>
+                <!-- row two -->
+                <div class="row" id="billing_row_two">
+                    <div class="col-xs-6 col-md-6" id="form_left">
+                        <label id="billing_address1_label" for="billingAddress1">Billing Address</label>
+                        <input type="text" required class="form-control" maxlength="128" name="billing_address" id="billing_address" value autocomplete="address-line1"
+                               name="billingAddress1" [(ngModel)]="billingAddressInfo.billingAddress1"
+                               #billingAddress1 ="ngModel" required pattern="^^(?=.*\d)[a-zA-Z\s\d\/]+$">
+                      <div *ngIf="billingAddress1.dirty && billingAddress1.invalid" class="alert alert-danger">
+                        Please input Address correctly
+                      </div>
+                    </div>
+                    <div class="col-xs-6 col-md-6" id="form_right">
+                        <label id="billing_state_label" required for="state">State</label>
+                        <div class="dselect_container">
+                          <select class="form-control" id="billing_state_select_dselect_container" name="state" [(ngModel)]="billingAddressInfo.state">
+                            <option>Select State</option>
+                            <option>AA</option>
+                            <option>AE</option>
+                            <option>AP</option>
+                            <option>AK</option>
+                            <option>AZ</option>
+                            <option>AR</option>
+                            <option>CA</option>
+                            <option>CO</option>
+                            <option>CT</option>
+                            <option>DE</option>
+                            <option>DC</option>
+                          </select>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <!-- row three -->
+                <div class="row" id="billing_row_three">
+                    <div class="col-xs-6 col-md-6" id="form_left">
+                        <label id="billing_address2_label" for="billingAddress2">Billing Address, Line 2</label>
+                        <input type="text" class="form-control" maxlength="128" name="billingAddress2" id="billing_address_two" value autocomplete="address-line2"
+                               [(ngModel)]="billingAddressInfo.billingAddress2"
+                               #billingAddress2 ="ngModel" required pattern="^([a-zA-Z]{3,30}\s*)+$">
+                      <div *ngIf="billingAddress2.dirty && billingAddress2.invalid" class="alert alert-danger">
+                        Please input Address correctly
+                      </div>
+                      </div>
+                    <div class="col-xs-6 col-md-6" id="form_right">
+                        <label for="zipCode">Zip or postal code</label>
+                        <input type="text" required class="form-control" maxlength="10" name="zipCode" id="billing_postal_code" value autocomplete="postal-code"
+                               [(ngModel)]="billingAddressInfo.zipCode"
+                               #zipCode ="ngModel" required pattern="^[0-9]*$">
+                      <div *ngIf="zipCode.dirty && zipCode.invalid" class="alert alert-danger">
+                        Please input Zip Code correctly
+                      </div>
+                    </div>
+  
+                </div>
+                <br>
+                <!-- row four -->
+                <div class="row" id="billing_row_four">
+                    <div class="col-xs-6 col-md-6" id="form_left">
+                        <label for="country">Country</label>
+                        <input type="text" required class="form-control" maxlength="16" name="country" id="billing_country" value autocomplete="country"
+                               [(ngModel)]="billingAddressInfo.country"
+                               #country ="ngModel" required pattern="^([a-zA-Z]{3,30}\s*)+$">
+                      <div *ngIf="country.dirty && country.invalid" class="alert alert-danger">
+                        Please input Country Name correctly
+                      </div>
+                      </div>
+                    <div class="col-xs-6 col-md-6" id="form_right">
+                        <label for="phoneNumber">Phone Number</label>
+                        <input type="text" required class="form-control" maxlength="16" name="phoneNumber" id="billing_phone" value autocomplete="tel"
+                               [(ngModel)]="billingAddressInfo.phoneNumber"
+                               #phoneNumber ="ngModel" required pattern="^[0-9]*$">
+                      <div *ngIf="phoneNumber.dirty && phoneNumber.invalid" class="alert alert-danger">
+                        Please input Phone Number correctly
+                      </div>
+                    </div>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-default btn-primary" [disabled]="billingAddressFrom.form.invalid">Submit</button>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  

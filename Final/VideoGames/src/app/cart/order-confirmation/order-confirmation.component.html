@@ -1,0 +1,165 @@
+<div class="checkout_pipeline">
+  <br>
+  <div class="row">
+    <div class="process">
+      <div class="process-row nav nav-tabs">
+        <div class="process-step">
+          <button type="button" class="btn btn-circle btn-default" id="payment_info_tab_select" data-toggle="tab" routerLink="../../checkout"><i class="glyphicon glyphicon-credit-card"></i></button>
+          <p><small>Payment Information</small></p>
+        </div>
+
+        <div class="process-step">
+          <button type="button" class="btn btn-info btn-circle" id="review_tab_select" data-toggle="tab"><i class="glyphicon glyphicon-usd"></i></button>
+          <p><small>Review And Purchase</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="page_content row">
+  <div class="checkout_content_box well col-md-9 col-sm-9 col-xs-9">
+<!-- head: order information + user information -->
+      <div class="row text-center">
+          <div class="col-xs-4 col-sm-4 col-md-4 contactInfo-area">
+              <address>
+                  <strong>{{user.userContactInfo.firstName}} {{user.userContactInfo.lastName}}</strong>
+                  <br>
+                  {{user.userContactInfo.userName}}
+                  <br>
+                  {{user.userContactInfo.email}} 
+                  <br>
+                  <abbr title="Phone">{{user.userContactInfo.phone}}</abbr>
+              </address>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-7 text-right orderInfo-area">
+              <p>
+                  <em>Date: {{orderTime |date: "y-MM-dd EEEE"}}</em>
+              </p>
+              <p>
+                  <em>Receipt id: {{receiptId}}</em>
+              </p>
+          </div>
+      </div>
+
+<!-- checkout game list information -->
+      <div class="row checkoutList-area">
+        <div class="text-center">
+          <h1>Receipt</h1>
+        </div>
+
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th class="col-md-9">Game Name</th>
+              <th class="col-md-1">quantity</th>
+              <th class="text-center col-md-1">Price</th>
+              <th class="text-center col-md-1">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- *ngFor = let  -->
+            <div class="checkoutItem view" *ngFor="let checkoutItem of checkoutItemList">
+            <tr>
+              <td class="col-md-9"><em>{{checkoutItem.game.title}}</em></td>
+              <td class="col-md-1" style="text-align:center">{{checkoutItem.game.quantity}}</td>
+              <td class="col-md-1 text-center">{{checkoutItem.game.price | currency: 'USD': true: '1.2-3'}}</td>
+              <td class="col-md-1 text-center">$ {{checkoutItem.game.price}} * {{checkoutItem.game.quantity}}</td>
+            </tr>
+            </div>
+            <!-- total count part -->
+            <tr>
+              <td>   </td>
+              <td>   </td>
+              <td class="text-right">
+                <p><strong>Subtotal: </strong></p>
+                <p><strong>Tax: </strong></p>
+              </td>
+              
+              <td class="text-center">
+                <p><strong>{{totalSum | currency: 'USD': true: '1.2-3'}}</strong></p>
+                <p><strong>{{totalSum * 0.06 | currency: 'USD': true: '1.2-3'}}</strong></p>
+              </td>
+            </tr>
+            <tr>
+              <td>   </td>
+              <td>   </td>
+              <td class="text-right"><h4><strong>Total: </strong></h4></td>
+              <td class="text-center text-danger col-md-4"><h4><strong>{{totalSum * 1.06 | currency: 'USD': true: '2.2-3'}}</strong></h4></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+<!-- payment method -->
+      <div class="row text-center">
+        <div class="checkout_review_area">
+          <div class="col-md-12" id="checkout_review_payment_methods_area">
+            <label class="review_row_label col-md-2">Payment methods</label>
+            <div class="review_row_value col-md-4">
+              <div class="payment_method_review_row" id="payment_method_review_row_provider" style="display:block">
+                <p id="payment_method_review_text" class="payment_method_review_method_label">{{paymentCardDetail.method}}&nbsp;&nbsp;{{paymentCardDetail.cardNumber}}</p>
+                  <!-- (<a routerLink="checkout">Change</a>) -->
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="col-md-12" id="checkout_review_billingAddress_area">
+            <label class="review_row_label col-md-2">Billing Address</label>
+              <div class="review_row_value col-md-4">
+                <p id="review_address_body">
+                  {{billingAddressInfo.firstName}}&nbsp;&nbsp;{{billingAddressInfo.lastName}}
+                  <br>
+                  {{billingAddressInfo.addressLine1}}
+                  <br *ngIf="billingAddressInfo.addressLine2">
+                  {{billingAddressInfo.addressLine2}}
+                  <br>
+                  {{billingAddressInfo.city}} {{billingAddressInfo.state}}
+                  <br>
+                  {{billingAddressInfo.country}}
+                </p>
+              </div>
+            </div>
+          <br>
+      
+          <div class="col-md-12" id="checkout_review_phone_area">
+            <label class="review_row_label col-md-2">Phone Number</label>
+            <div class="review_row_value col-md-4">
+              <p id="review_phone_body">{{billingAddressInfo.phoneNumber}}</p>
+            </div>
+          </div>
+          <br>
+        </div>
+    </div>
+    <div class="col-md-12 rule"></div>
+
+    <!-- purchase or cancel -->
+    <div class="purchase_bottom">
+      <div id="purchase_confirm_ssa" class="">
+        <input type="checkbox" name="accept_ssa" value="1" id="accept_ssa">
+        <label for="accept_ssa">I agree to the terms of the Subscriber Agreement.</label>
+      </div>
+      <br>
+
+      <table>
+        <tr>
+          <td class="col-md-2 col-xs-3 col-sm-3 col-lg-5"></td>
+          <td id="cancel_button_container_bottom" class="col-md-3">
+            <button id="cancel_button_bottom" class="btn-lg" style="display:block;" >
+              <span class="glyphicon glyphicon-shopping-cart" routerLink="../../../cart"> ReturnCart</span>
+            </button>
+          </td>
+          <td id="purchase_button_container_bottom" class="col-md-3">
+            <button type="button" class="btn btn-success btn-lg" style="display:block;" (click)=completeOrder()>
+              <span class="glyphicon glyphicon-check" style="display:block;"> Purchase</span>
+            </button>
+          </td>
+        </tr>
+      </table>
+
+      <br>
+    </div>
+
+  </div>
+</div>
+

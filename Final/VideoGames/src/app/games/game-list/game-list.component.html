@@ -1,0 +1,75 @@
+<h1>Games List</h1>
+
+<div class="btn-group" role="group" aria-label="...">
+  <button type="button" class="btn btn-default" (click)="filterByPS4()">PS4</button>
+  <button type="button" class="btn btn-default" (click)="filterByXBOX()">XBOX</button>
+  <button type="button" class="btn btn-default" (click)="filterByPC()">PC</button>
+  <button type="button" class="btn btn-default" (click)="showAll()">All</button>
+</div>
+
+<div class="container" id="SearchandFilterbar">
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="input-group">
+        <div class="input-group-btn search-panel">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            <span id="search_concept">Filter by</span> <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a (click)="filterByPS4()">PS4</a></li>
+            <li><a (click)="filterByXBOX()">XBOX</a></li>
+            <li><a (click)="filterByPC()">PC</a></li>
+            <li class="divider"></li>
+            <li><a (click)="showAll()">All</a></li>
+          </ul>
+        </div>
+        <input type="hidden" name="search_param" value="all" id="search_param">
+        <input type="text" [(ngModel)]="inputwords" class="form-control" name="x" placeholder="Search game...">
+        <span class="input-group-btn">
+                  <button class="btn btn-default" type="button" (click)="searchbyKeyword()"><span class="glyphicon glyphicon-search"></span></button>
+              </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-games-sortnavigator></app-games-sortnavigator>
+<div>
+<div class="container outerpadding" style="padding-bottom: 10px; padding-top: 10px">
+  <div class="row">
+
+    <div class="col-lg-3" *ngFor="let game of listOfGames | paginate: { itemsPerPage: 8, currentPage: p }">
+      <div class="panel">
+        <div class="panel-heading" style="background-color:teal;color:#fff; height: 60px" routerLink="detail/{{game.id}}"><strong>{{ game.title }}</strong></div>
+        <div class="panel-body" style="background-color:#000;color:#fff; box-shadow:0 -12px 13px teal inset;">
+
+          <div class="boximg">
+            <img src="{{game.img}}" class="img-responsive" routerLink="detail/{{game.id}}">
+            <span class="label label-danger date">{{ game.releaseYear }}.{{ game.releaseMonth }}.{{ game.releaseDay }}</span>
+            <span class="likebut glyphicon glyphicon-tag"></span>
+          </div>
+
+
+          <br>
+          <p class="pull-left">{{ game.score }}<br>
+            <span class="glyphicon glyphicon-star" style="font-size:18px;"></span>
+            <span class="glyphicon glyphicon-star" style="font-size:18px;"></span>
+            <span class="glyphicon glyphicon-star" style="font-size:18px;"></span>
+            <span class="glyphicon glyphicon-star" style="font-size:18px;"></span>
+            <span class="glyphicon glyphicon-star-empty" style="font-size:18px;"></span>
+          </p>
+
+          <span class="badge pull-right" style="background-color:teal">{{ game.price }}</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</div>
+<div style="text-align: center">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+
+

@@ -1,0 +1,165 @@
+<div class="container" *ngIf="game">
+  <div class="row">
+    <div class="col-xs-4 item-photo">
+      <img style="width:100%; height: 350px" src="{{ game.img }}" />
+    </div>
+    <div class="col-xs-5" style="border:0px solid gray">
+      <!-- Datos del vendedor y titulo del producto -->
+      <h3>{{game.title}}</h3>
+      <h5 style="color:#337ab7">{{game.platform}}</h5>
+
+      <!-- Precios -->
+      <h6 class="title-price"><small>{{game.genre}}</small></h6>
+      <h3 style="margin-top:0px;">Price: {{game.price}}</h3>
+
+      <!-- Detalles especificos del producto -->
+      <div class="section">
+        <h6 class="title-attr" style="margin-top:15px;" ><small>Score: {{game.score}}</small></h6>
+      </div>
+      <div class="section" style="padding-bottom:5px;">
+        <h6 class="title-attr"><small>Release Date: {{ game.releaseYear }}.{{ game.releaseMonth }}.{{ game.releaseDay }}</small></h6>
+      </div>
+
+      <div class="section" style="padding-bottom:20px;">
+        <app-game-addtocart (emitCartList)="passCartList($event)"></app-game-addtocart>
+      </div>
+    </div>
+    <div class="col-xs-9">
+      <div style="width:100%;border-top:1px solid silver">
+
+        <div id="content-slider" class="clr">
+          <div class="wrap-slider clr">
+
+            <!-- 	========================Thumbnail ControlNav======================================    -->
+            <input type="radio" id="a-1" name="a" >
+            <input type="radio" id="a-2" name="a" >
+            <input type="radio" id="a-3" name="a" >
+            <input type="radio" id="a-4" name="a" >
+
+            <nav id="main">
+              <label for="a-1" class="first"></label>
+              <label for="a-2" class="first"></label>
+              <label for="a-3" class="first"></label>
+              <label for="a-4" class="first"></label>
+              <!-- <label for="a-5" class="first"></label> -->
+            </nav>
+            <!-- 	==============================================================    -->
+            <nav id="control">
+              <label for="a-1" ></label>
+              <label for="a-2" ></label>
+              <label for="a-3" ></label>
+              <label for="a-4" ></label>
+              <!-- <label for="a-5" class="first"></label> -->
+            </nav>
+            <!-- 	==============================================================    -->
+
+            <!-- 	IMAGE NAVIGATION pic -->
+            <span id="b-1" class="th" tabindex="10">             
+        <img src="{{game.img1}}" alt="" id="p-1">
+				<div class="title-1">
+				</div>
+			</span>
+
+            <span id="b-2" class="th" tabindex="11">
+				<img src="{{ game.img2 }}" alt="" id="p-2">
+				<div class="title-2">
+				</div>
+			</span>
+
+            <span id="b-3" class="th" tabindex="12">
+				<img src="{{ game.img3 }}" alt="" id="p-3">
+				<div class="title-3">
+				</div>
+			</span>
+
+            <span id="b-4" class="th" tabindex="13">
+				<img src="{{ game.img4 }}" alt="" id="p-4">
+				<div class="title-4">
+				</div>
+			</span>
+
+            <!-- ______________IMAGES_________________________________________ -->
+            <figure>
+              <figcaption class="title-1">
+                <p>{{ game.title }}</p>
+              </figcaption>
+              <iframe width="880px" height="550px" class="youtube-video" [src]='sanitizer.bypassSecurityTrustResourceUrl(game.video)' frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+            </figure>
+
+            <div class="slider">
+              <div class="inset">
+
+
+                <figure>
+                  <figcaption class="title-2">
+                    <p>{{ game.title }}</p>
+                  </figcaption>
+                  <img src="{{game.img1}}" alt="" id="i-2" class="f">
+                </figure>
+
+                <figure>
+                  <figcaption class="title-3">
+                    <p>{{ game.title }}</p>
+                  </figcaption>
+                  <img src="{{game.img2}}" alt="" id="i-3" class="f">
+                </figure>
+
+                <figure>
+                  <figcaption class="title-4">
+                    <p>{{ game.title }}</p>
+                  </figcaption>
+                  <img src="{{game.img3}}" alt="" id="i-4" class="f">
+                </figure>
+
+
+                <figure>
+                  <figcaption class="title-5">
+                    <p>{{ game.title }}</p>
+                  </figcaption>
+                  <img src="{{game.img4}}" alt="" id="i-5" class="f">
+                </figure>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- <div class="col-md-6 nopadding b-padding video-container image-large">
+          <iframe class="youtube-video" [src]='sanitizer.bypassSecurityTrustResourceUrl(game.video)' frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+        </div> -->
+
+
+        <p style="padding:30px;">
+          <small>
+            The highest rated* annual sports title of this console generation returns with NBA 2K18, featuring unparalleled authenticity and improvements on the court. *According to 2008 - 2016 Metacritic.com
+
+            The future of sports career modes has arrived, allowing you to play the game the way you like. Build your career in NBA games, hit the courts in The Playground Park, join the Pro-Am circuit, or explore the shops and venues in an all-new open neighborhood setting. Featuring new MyPLAYER upgrade and endorsement systems, our biggest cast of characters to date including NBA players, and so much more.
+          </small>
+        </p>
+        <small>
+          <ul>
+            <li>Collect player cards featuring NBA legends from yesterday and today, and compete in a variety of online and offline modes.</li>
+            <li>Available on GSM, AT T, T-Mobile and other carriers</li>
+            <li>Compatible with GSM 850 / 900 / 1800; HSDPA 850 / 1900 / 2100 LTE; 700 MHz Class 17 / 1700 / 2100 networks</li>
+            <li>MicroUSB and USB connectivity</li>
+            <li>Interfaces with Wi-Fi 802.11 a/b/g/n/ac, dual band and Bluetooth</li>
+            <li>Wi-Fi hotspot to keep other devices online when a connection is not available</li>
+            <li>SMS, MMS, email, Push Mail, IM and RSS messaging</li>
+            <li>Front-facing camera features autofocus, an LED flash, dual video call capability and a sharp 4128 x 3096 pixel picture</li>
+            <li>Features 16 GB memory and 2 GB RAM</li>
+            <li>Upgradeable Jelly Bean v4.2.2 to Jelly Bean v4.3 Android OS</li>
+            <li>Collect player cards featuring NBA legends from yesterday and today, and compete in a variety of online and offline modes.</li>
+            <li>Available in white or black</li>
+            <li>Model I337</li>
+            <li>Package includes phone, charger, battery and user manual</li>
+            <li>Phone is 5.38 inches high x 2.75 inches wide x 0.13 inches deep and weighs a mere 4.59 oz </li>
+          </ul>
+        </small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="list_aside">
+  <!-- <app-game-cart-list [listOfCart]="listOfCart"></app-game-cart-list> -->
+</div>

@@ -1,0 +1,113 @@
+<div class="container">
+    <div class="content">
+        <div class="left col-md-3">
+            <ul class="nav nav-pills nav-stacked admin-menu">
+                <li><a routerLink="../../information"><i class="fa fa-user fa-fw"></i> Contact Information</a></li>
+                <li><a routerLink="../payment"><i class="fa fa-list-alt fa-fw"></i> Payment Method</a></li>
+                <li><a routerLink="../billing"><i class="fa fa-file-o fa-fw"></i> Billing Address</a></li>
+                <li class="active"><a><i class="fa fa-cogs fa-fw"></i> Account Settings</a></li>
+            </ul>
+        </div>
+
+        <div class="right col-md-9">
+<!-- view information -->
+            <div class="well" id="contact-info-view">
+                <div class="row" id="row1">
+                    <div class="col-xs-6 col-md-6" id="form_left">
+                        <label class="col-md-4">User Name</label>
+                        <p class="col-md-4">{{userName}}</p>
+                    </div>
+                    <div class="col-xs-6 col-md-6" id="form_right">
+                        <label class="col-md-4">Password</label>
+                        <p class="col-md-4">{{password}}</p>
+                    </div>
+                </div>
+                <div class="row" id="row2">
+                    <div class="col-xs-6 col-md-6" id="form_left">
+                        <label class="col-md-4">Preference</label>
+                        <p class="col-md-4">{{platforms}}</p>
+                    </div>
+                    <div class="col-xs-6 col-md-6" id="form_right">
+                        <!-- <label class="col-md-4">Password</label>
+                        <p class="col-md-4">"password"</p> -->
+                    </div>
+                </div>
+
+                <button class="btn btn-primary submit-button" type="button" (click)="editClick()">Edit</button>
+            </div>
+
+<!-- edit information -->
+            <div class="well" id="contact-info-edit" *ngIf="editBtnIsClick">
+                <!-- *ngIf="editBtnIsClick" -->
+                <form class="form-billinginfo" #accountForm="ngForm">
+                    <h3 class="text-center">Update my account information</h3>
+                        <div class="row" id="row-1">
+                            <div class="col-md-6" id="form_left">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                        <input type="text" class="form-control" placeholder="User Name" required
+                                        name="userName" [(ngModel)]="newUserName"
+                                               #userName ="ngModel" required pattern="^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$">
+                                      <div *ngIf="userName.dirty && userName.invalid" class="alert alert-danger">
+                                        UserName length(8-20). No special characters.
+                                      </div>
+                                        <!-- <div *ngIf="formErrors.firstName" class="alert alert-danger">
+                                            {{formErrors.firstName}}
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6" id="form_right">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-collapse-down"></span></span>
+                                        <input type="text" class="form-control" placeholder="Password" required
+                                        name="password" [(ngModel)]="newPassword"
+                                               #password ="ngModel" required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
+                                      <div *ngIf="password.dirty && password.invalid" class="alert alert-danger">
+                                        Minimun Eight characters, at least one letter, one number
+                                      </div>
+                                                    <!-- <div *ngIf="formErrors.lastName" class="alert alert-danger">
+                                                            {{formErrors.lastName}}
+                                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" id="row-2">
+                            <div class="col-md-6" id="form_left">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-credit-card"></span></span>
+                                        <div class="platform-checkbox">
+                                            <div class="form-check-inline checkbox-inline" *ngFor="let platform of platformLookupList; let i = index;">
+                                                <label class="form-check-inline checkbox-inline" >
+                                                    <input type="checkBox" class="form-check-input" [id]="platformFieldList[i]" [name]="platformLookupList[i]" [value]="platformFieldList[i]" (change)="addOrRemovePlatforms($event.target.value)">
+                                                    {{platform}}
+                                                  </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6" id="form_right">
+                                <!-- <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                        <input type="text" class="form-control name-input" placeholder="MM" required
+                                        name="expMonth" [(ngModel)]="currentUser.paymentInfo.expMonth"/>
+                                        <input type="text" class="form-control name-input" placeholder="YYYY" required
+                                        name="expYear" [(ngModel)]="currentUser.paymentInfo.expYear"/>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    <button class="btn btn-success submit-button" type="submit" [disabled]="accountForm.form.invalid" (click)="saveClick()">Save</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

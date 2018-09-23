@@ -1,0 +1,187 @@
+<h2>Register</h2>
+
+<form #registrationForm="ngForm" (submit)="createForm()">
+  <div  class="form-group">
+    <label for="firstName">First Name</label>
+    <input  type="text" 
+            required 
+            class="form-control" 
+            id="firstName" 
+            #firstName="ngModel" 
+            name="firstName" 
+            [(ngModel)]="currentUser.userDetailInfo.firstName" 
+            placeholder="Enter first name"/>
+
+    <div *ngIf="formErrors.firstName" class="alert alert-danger">
+      {{formErrors.firstName}}
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="lastName">Last Name</label>
+    <input  type="text" 
+            required 
+              class="form-control" 
+              id="lastName" 
+              name="lastName" 
+              [(ngModel)]="currentUser.userDetailInfo.lastName" 
+              placeholder="Enter last name" />
+      <div *ngIf="formErrors.lastName" class="alert alert-danger">
+          {{formErrors.lastName}}
+      </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input  type="email" 
+            required 
+              #email="ngModel"
+              class="form-control" 
+              id="email" 
+              name="email" 
+              [(ngModel)]="currentUser.userDetailInfo.email" 
+              placeholder="Enter email" />
+      <div *ngIf="formErrors.email" class="alert alert-danger">
+          {{formErrors.email}}
+      </div>
+  </div>
+
+  <div class="form-inline form-group">
+      <div class="form-group age">
+          <label for="age">Age</label>
+          <div class="row">
+            <div class="col-xs-4 col-sm-2">
+              <input  type="number" 
+                      required 
+                      class="form-control" 
+                      id="age" 
+                      name="age" 
+                      [(ngModel)]="currentUser.userDetailInfo.age" 
+                      placeholder="Enter age" />
+            </div>
+            <div *ngIf="formErrors.age" class="alert alert-danger">
+                {{formErrors.age}}
+            </div>
+          </div>
+      </div>
+      <div class="form-group dob">
+          <label for="dob">DOB</label>
+          <div>
+          <input  type="date" 
+                  required 
+                    class="form-control" 
+                    id="dob" 
+                    name="dob" 
+                    [(ngModel)]="currentUser.userDetailInfo.dob" 
+                    placeholder="Enter DOB" />
+              <div *ngIf="formErrors.dob" class="alert alert-danger">
+                  {{formErrors.dob}}
+              </div>
+          </div>
+      </div>
+        <!-- Dynamic Form Data -->
+      <div class="form-group">
+        <label for="country">Country</label>
+        <div>
+          <select id="country" 
+                  required 
+                  name="country" [(ngModel)]="currentUser.userDetailInfo.country"  class="form-control">
+            <option>Please Select...</option>
+            <option *ngFor="let country of countryLookupList" [value]="country.id">
+              {{country.name}}
+            </option>
+          </select>
+          <div *ngIf="formErrors.country" class="alert alert-danger">
+              {{formErrors.country}}
+          </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="form-group">
+        <label for="gender">Gender</label>
+        <div>
+          <div class="form-check-inline checkbox-inline">
+            <label class="form-check-label">
+              <input type="radio" 
+                      required 
+                      class="form-check-input" name="male" [(ngModel)]="currentUser.userDetailInfo.gender" id="male" value="Male" />
+              Male
+            </label>
+          </div>
+          <div class="form-check-inline checkbox-inline">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="female" [(ngModel)]="currentUser.userDetailInfo.gender" id="female" value="Female" />
+                Female
+              </label>
+          </div>
+          <div class="form-check-inline checkbox-inline">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="other" [(ngModel)]="currentUser.userDetailInfo.gender" id="other" value="Other" />
+                Other
+              </label>
+          </div>
+        </div>
+        <div *ngIf="formErrors.gender" class="alert alert-danger">
+            {{formErrors.gender}}
+        </div>
+      </div>
+    
+  <div class="form-group">
+    <label for="phone">Phone</label>
+    <input  type="number" 
+            required 
+              #phone="ngModel"
+              class="form-control" 
+              id="phone" 
+              name="phone" 
+              [(ngModel)]="currentUser.userDetailInfo.phone" 
+              placeholder="Enter phone" />
+      <div *ngIf="formErrors.phone" class="alert alert-danger">
+          {{formErrors.phone}}
+      </div>
+  </div>
+
+  <div class="form-group">
+    <label for="introduction">Text</label>
+    <textarea class="form-control" 
+            required 
+                id="introduction" 
+                rows="5" 
+                name="introduction" 
+                [(ngModel)]="currentUser.userDetailInfo.introduction" 
+                placeholder="Enter biography"></textarea>
+  </div>
+
+  <div class="form-group">
+
+    <!-- Choose Platforms (checkBox) Dynamic Form Data-->
+    <div class="form-group">
+      <label for="platforms">Platform</label>
+      <div>
+        <label class="form-check-inline checkbox-inline" *ngFor="let platform of platformLookupList; let i = index;">
+          <input type="checkBox" class="form-check-input" [id]="platformFieldList[i]" [name]="platformLookupList[i]" [value]="platformFieldList[i]" (change)="addOrRemovePlatforms($event.target.value)" />
+          {{platform}}
+        </label>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-default btn-primary" [disabled]="registrationForm.form.invalid">Submit</button>
+  </div>
+
+</form>
+<!-- {{currentUser.userDetailInfo.platforms[0]}},{{currentUser.userDetailInfo.platforms[1]}},{{currentUser.userDetailInfo.platforms[2]}} <br /> -->
+<!-- <h4>
+    {{registrationViewModel.firstName}} <br />
+    {{registrationViewModel.lastName}} <br />
+    {{registrationViewModel.email}} <br />
+    {{registrationViewModel.phone}} <br />
+    {{registrationViewModel.introduction}} <br />
+    {{registrationViewModel.dob}} <br />
+    {{registrationViewModel.country}} <br />
+    {{registrationViewModel.age}} <br />
+    {{registrationViewModel.pointGuard}} <br />
+    {{registrationViewModel.gender}} <br />
+    {{registrationViewModel.platforms[0]}},{{registrationViewModel.platforms[1]}},{{registrationViewModel.platforms[2]}} <br />
+    {{registrationViewModel.password}} <br />
+</h4> -->

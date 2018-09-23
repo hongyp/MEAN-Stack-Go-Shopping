@@ -1,0 +1,12 @@
+<div class="card" *ngIf="selectedGame">
+  <h1>Card</h1>
+  <div class="card-block profile-heading">
+    <h4>{{ selectedGame.title }}</h4>
+  </div>
+  <ul class class="list-group list-group-flush">
+    <li class="list-group-item"><strong>Price: </strong>{{ selectedGame.title }}</li>
+    <li class="list-group-item"><strong>Score: </strong>{{ selectedGame.price }}</li>
+    <li class="list-group-item"><strong>Genre: </strong>{{ selectedGame.score }}</li>
+  </ul>
+  <button type="button" class="btn btn-primary" (click)="cancelDetailGame()">Submit</button>
+</div>

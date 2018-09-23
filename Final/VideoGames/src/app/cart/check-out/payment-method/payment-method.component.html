@@ -1,0 +1,94 @@
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+      <div class="panel panel-default">
+          <div class="panel-heading">
+              <h3 class="panel-title" id="payment_header">Payment Details</h3>
+              <div class="checkbox pull-right">
+                  <label><input type="checkbox" [checked]="paymentCardDetail.rememberInfo" (change)="rememberForm()"/>Remember</label>
+              </div>
+          </div>
+  
+  <!-- payment method div -->
+        <form (submit)="createPaymentDetail()">
+          <div class="panel-body" id="payment_info_form_area">
+              <form #paymentCard="ngForm" (submit)="createPaymentDetail()">
+                <!-- row one -->
+                <div class="row" id="payment_row_one">
+                  <div class="col-xs-6 col-md-6" id="form_left">
+                      <label id="payment_info_method_label" for="payment_method">Please select a payment method</label>
+                      <div class="dselect_container">
+                          <select class="form-control" id="payment_method_droplist" name="method" [(ngModel)]="paymentCardDetail.method">
+                                <option id="visa">Visa</option>
+                                <option id="mastercard">MasterCard</option>
+                                <option id="AmericanExpress">American Express</option>
+                                <option id="discover">Discover</option>
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-xs-6 col-md-6 pull-right" id="form_right">
+                      <label for="cardNumber">Card Number</label>
+                      <div class="input-group">
+                            <input type="text" class="form-control" id="cardNumber" maxlength="16" placeholder="Valid Card Number"
+                              required autofocus value autocomplete="cc-number" style="display:inline-block;" name="cardNumber"
+                                 [(ngModel)]="paymentCardDetail.cardNumber"
+                                 #cardNumber ="ngModel" required pattern="^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$">
+                        <div *ngIf="cardNumber.dirty && cardNumber.invalid" class="alert alert-danger">
+                          Please input Card Number correctly
+                        </div>
+                      </div>
+  
+                  </div>
+                </div>
+                <br>
+                <!-- row two -->
+                <div class="row" id="payment_row_two">
+                    <div class="col-xs-6 col-md-6 form-group" id="form_left">
+                        <label id="card_holder_label" for="cardHolder">Card Holder</label>
+                        <input type="text" class="form-control" id="cardNumber" maxlength="16" placeholder="Name On Card"
+                         name="cardHolder" [(ngModel)]="paymentCardDetail.cardHolder"
+                         #cardHolder ="ngModel" required pattern="^((?:[A-Za-z]+ ?){1,3})$">
+                      <div *ngIf="cardHolder.dirty && cardHolder.invalid" class="alert alert-danger">
+                        Please input Card Holder correctly
+                      </div>
+                    </div>
+                    <div class="col-xs-6 col-md-6 pull-right" id="form_right">
+                        <div class="col-xs-8 col-md-8" id="expiration_date">
+                            <div class="form-group col-xs-6 col-lg-6 pl-ziro">
+                                <label for="expMonth">Exp.Month</label>
+                                <input type="text" class="form-control" id="expityMonth" placeholder="MM" name="expMonth"
+                                       [(ngModel)]="paymentCardDetail.expMonth"
+                                       #expMonth ="ngModel" required pattern="^(0?[1-9]|1[012])$">
+                              <div *ngIf="expMonth.dirty && expMonth.invalid" class="alert alert-danger">
+                                Please input Expire Month correctly
+                              </div>
+                            </div>
+                            <div class="form-group col-xs-6 col-lg-6 pl-ziro">
+                                <label for="expYear">Exp.Year</label>
+                                <input type="text" class="form-control" id="expityYear" placeholder="YY" required name="expYear"
+                                       [(ngModel)]="paymentCardDetail.expYear"
+                                       #expYear ="ngModel" required pattern="^(201[7-9]|20[2-3]\d|2040)$">
+                              <div *ngIf="expYear.dirty && expYear.invalid" class="alert alert-danger">
+                                Please input Expire Year correctly
+                              </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-4 col-md-4" id="cv_code">
+                            <label for="cvCode">CV Code</label>
+                            <input type="password" class="form-control" id="cvCode" placeholder="CV" required name="cvCode"
+                                   [(ngModel)]="paymentCardDetail.cvCode"
+                                   #cvCode ="ngModel" required pattern="^([0-9]{3,4})$">
+                          <div *ngIf="cvCode.dirty && cvCode.invalid" class="alert alert-danger">
+                            Please input CV Code correctly
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                  <!-- row three -->
+                  <button type="submit" class="btn btn-default btn-primary" [disabled]='paymentCard.form.invalid'>Submit</button>
+              </form>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

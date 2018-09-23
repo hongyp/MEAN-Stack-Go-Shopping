@@ -1,0 +1,48 @@
+.height-label, .weight-label {
+    padding-top: 5px;
+}
+form, h2 {
+    width: 80%;
+    margin-left: 10%;
+}
+
+input.ng-untouched, textarea.ng-untouched, select.ng-untouched {
+    border-left: 5px solid green;
+}
+
+input.ng-touched.ng-invalid, textarea.ng-touched.ng-invalid, select.ng-touched.ng-invalid {
+    border-left: 5px solid red;
+}
+
+input.ng-dirty, textarea.ng-dirty, select.ng-dirty {
+    background: rgb(248, 220, 135);
+    color: black;
+}
+
+// input.ng-pristine, textarea.ng-pristine, select.ng-pristine {
+//     background: rgb(252, 210, 210);
+//     color: white;
+// }
+
+input.ng-dirty.ng-valid, textarea.ng-dirty.ng-valid, select.ng-dirty.ng-valid {
+    border-left: 5px solid green;
+}
+input.ng-dirty.ng-invalid, textarea.ng-dirty.ng-invalid, select.ng-dirty.ng-invalid {
+    border-left: 5px solid red;
+}
+
+// show the invalid icon
+.form-group .ng-invalid.ng-dirty {
+    border-color: #DB534F;
+    padding-right: 2.25rem;
+    background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#d9534f' viewBox='-2 -2 7 7'%3E%3Cpath stroke='%23d9534f' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center right 0.635rem;
+    background-color: white;
+}
+.age {
+    margin-right: 50px;
+}
+.dob {
+    @extend .age;
+}

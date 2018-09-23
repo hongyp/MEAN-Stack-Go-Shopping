@@ -1,0 +1,60 @@
+body {
+    margin-top: 20px;
+}
+.container{
+    margin-left: 13%;
+    margin-bottom: 25px;
+}
+.panel{
+    background-color: #ffffff1f;
+}
+.panel-default{
+    border-color: #dddddd30;
+}
+.form-control{
+    width:30%;
+}
+#shopAgain{
+    width: 35%;
+    float: right;
+}
+#cart_logo{
+    float: left;
+}
+.panel-heading{
+    background-image: linear-gradient(to bottom,#ffffff1f 0,#ffffff1f 80%);
+}
+
+h3, h4, h4 strong,h5,h6 {
+    color: rgb(255, 255, 255);
+}
+.shape{    
+    border-style: solid; border-width: 0 40px 40px 0; float:right; height: 0px; width: 0px;
+    -webkit-transform: rotate(360deg);  
+    -moz-transform: rotate(360deg);  
+    -o-transform: rotate(360deg);  
+    transform: rotate(360deg); 
+}
+.shape-text{
+    color:#fff; font-size:12px; font-weight:bold; position:relative; right:-22px; top:-3px; white-space: nowrap;
+	-ms-transform:rotate(30deg); /* IE 9 */
+	-o-transform: rotate(360deg);  /* Opera 10.5 */
+	-webkit-transform:rotate(46deg); /* Safari and Chrome */
+	transform:rotate(46deg);
+}
+.offer{
+    background:#fff; border:1px solid #ddd; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); margin: 15px 0; overflow:hidden;
+  }
+.shape {
+    border-color: rgba(255,255,255,0) #d9534f rgba(255,255,255,0) rgba(255,255,255,0);
+  }
+.offer-radius{
+    border-radius:7px;
+  }
+.offer-danger {	border-color: #d9534f; }
+.offer-danger .shape{
+    border-color: transparent #d9534f transparent transparent;
+  }
+.alertDiv{
+    margin-left: 25%;
+  }

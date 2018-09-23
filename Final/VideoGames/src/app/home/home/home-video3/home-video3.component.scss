@@ -1,0 +1,196 @@
+body {
+  color: #777;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.4;
+  font-size: 1.3rem;
+}
+
+
+
+div {
+  display: block;
+
+}
+
+
+
+.a-title{
+
+  color: #00ABFA;
+  font-weight: 200;
+  font-size: 32px;
+  text-transform: uppercase;
+  line-height: 52px;
+  letter-spacing: 0.1em;
+}
+
+a:hover {
+  color: #81d6ff !important;
+  text-decoration: underline !important;
+}
+
+h1 {
+
+  background: rgb(30, 30, 30);
+  margin:0%;
+
+  padding: 4.5% 0;
+  width: 96%;
+
+  margin-left: 2%;
+  margin-top: 32%;
+
+  padding-left: 2%;
+  padding-bottom: 2%;
+
+
+  text-align: left;
+}
+
+
+.col-md-6{
+  //  margin-left: ;
+}
+
+.b-padding {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.square {
+  float: left;
+  position: relative;
+  width: 50%;
+  padding-bottom: 32.5%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.image-large {
+  border: 1px solid #000;
+}
+
+.img_1-1 {
+  background-image: url(https://images-eds-ssl.xboxlive.com/image?url=8Oaj9Ryq1G1_p3lLnXlsaZgGzAie6Mnu24_PawYuDYIoH77pJ.X5Z.MqQPibUVTc3Fe_A_Nj3zzanKbwhPX3O3elH16vU2gChvUWjC5XtUEfXpBqXQRIamZ7Hgn1AKBxRpVYdsFxY00epM9rQvqhNy4zPQgU49gFEbxYDHIQa5.w80_hTsYgmhcho9nWwHFo_DHzV0G_TALHHlOreUNFIgEm21RMc0Fkgp5C..h3FtI-&w=1440&h=810&format=jpg);
+
+}
+
+.img_1-1,
+.img_1-2,
+.img_7-1,
+.img_7-2 {
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  border-right: 1px solid #000;
+
+
+}
+
+.img_1-2 {
+  background-image: url(https://images-eds-ssl.xboxlive.com/image?url=8Oaj9Ryq1G1_p3lLnXlsaZgGzAie6Mnu24_PawYuDYIoH77pJ.X5Z.MqQPibUVTc3Fe_A_Nj3zzanKbwhPX3O3elH16vU2gChvUWjC5XtUHUjq8EI1GWUYbW8n9tVLSuLGvU6orkuYAr5wvc7S2Wt3dbUTyjtOeEWBqzJ9jYcPZBrVbpo_LGGZ.vaUZ4V5uU6P5plr074UggMxLGGViGgVNV3S.ZyM.z0WlJxdnSbvU-&w=1440&h=810&format=jpg);
+
+
+}
+
+.img_2-1 {
+  background-image: url(https://images-eds-ssl.xboxlive.com/image?url=8Oaj9Ryq1G1_p3lLnXlsaZgGzAie6Mnu24_PawYuDYIoH77pJ.X5Z.MqQPibUVTc3Fe_A_Nj3zzanKbwhPX3O3elH16vU2gChvUWjC5XtUF1_emZXEZArEBmTQbBnmgeLoIaz24zffzMw3cFqtt4_PH9.FUy2Lzk7m4ICfrlxrSoqcvPjQxhiCluKlO48uF_wMKUGEet2nnE8t_cFwrdBiOVvK7AAVWZHitMhX.VbYE-&w=1440&h=810&format=jpg);
+
+
+}
+
+.img_2-2 {
+  background-image: url(https://images-eds-ssl.xboxlive.com/image?url=8Oaj9Ryq1G1_p3lLnXlsaZgGzAie6Mnu24_PawYuDYIoH77pJ.X5Z.MqQPibUVTc3Fe_A_Nj3zzanKbwhPX3O3elH16vU2gChvUWjC5XtUGPLkfw30iHLXl2kwkyU1QrEyzZ4etto61jVHrPgS3MB9VYveMrxbK4pZGbQVsx76st1NpFcH.egfG8L6zgHN16PaAyywxWt8xX0eurKPVFZn6fVSSY52tZ.5tf0CxBYyU-&w=1440&h=810&format=jpg);
+
+}
+
+.img_2-2,
+.img_2-1,
+.img_1-2,
+.img_1-1{
+
+  width: 48%;
+
+
+  -webkit-filter: brightness(50%);
+  -moz-filter: brightness(50%);
+  -ms-filter: brightness(50%);
+  -o-filter: brightness(50%);
+  filter: brightness(50%);
+
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+
+}
+
+
+.img_2-2:hover,
+.img_2-1:hover,
+.img_1-2:hover,
+.img_1-1:hover{
+
+  -webkit-filter: brightness(100%);
+  -moz-filter: brightness(100%);
+  -ms-filter: brightness(100%);
+  -o-filter: brightness(100%);
+  filter: brightness(100%);
+
+}
+
+
+.text{
+
+
+  background: none;
+  position: absolute;
+  top: 50%;
+  //  left: 5%;
+  padding-left: 5%;
+  padding-top: 40%;
+  //padding: 15%;
+  //padding-top: 55%;
+  transform: translateY(-50%);
+  // text-align: right;
+  //  font-family: 'Cormorant Garamond', serif;
+  //  font-style: normal;
+  //  font-size: 2vmin;
+  color: #fffefe;
+  //font-weight: 400;
+  font-weight: bold;
+  font-size: x-large;
+  text-align: center;
+
+
+
+  -webkit-filter: brightness(150%)!important;
+  -moz-filter: brightness(150%)!important;
+  -ms-filter: brightness(150%)!important;
+  -o-filter: brightness(150%)!important;
+  filter: brightness(150%)!important;
+}
+
+
+
+
+
+.video-container {
+  float: left;
+  position: relative;
+  left: 2%;
+  width: 50%;
+  height: 0;
+  padding-bottom: 32.5%;
+}
+
+.youtube-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 98%;
+  height: 100%;
+}

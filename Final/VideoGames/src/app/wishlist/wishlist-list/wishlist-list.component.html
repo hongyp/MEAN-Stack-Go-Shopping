@@ -1,0 +1,73 @@
+<div class='container' >
+  <div class="row text-center" *ngIf="wishListIsEmpty">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 alertDiv">
+          <div class="offer offer-radius offer-danger">
+            <div class="shape">
+              <div class="shape-text">tip</div>
+            </div>
+            <div class="offer-content text-center">
+                <h3 class="lead">
+                  Your Wish List Is Empty Now!
+                </h3>						
+            </div>
+            <div class="offer-footer text-center">
+                <button class="btn btn-primary" routerLink = "../games">
+                  Go Shopping
+                </button>						
+            </div>
+          </div>
+      </div>
+  </div>
+
+  <div *ngFor="let item of listOfWishlist">
+      <div class='product col-md-3'>
+          <img src='{{item.game.img}}'>
+          <h2 class='header'>{{item.game.title}}</h2>
+          <p class='description'>Platform: {{item.game.platform}}
+            <br>
+            Score: {{item.game.score}}
+          </p>
+          <p class='price'>$ {{item.game.price}}</p>
+          <div class='btn col-md-6' [ngClass]="{'ok': step=='1'}" (click)="step='1'">Add to cart</div>
+          <div class='quickview' data-toggle="modal" data-target="#product_view"><i class="fa fa-search"></i>Quick View</div>
+        </div>
+<!-- toggle quick view -->
+        <div class="modal fade product_view" id="product_view">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+                        <h3 class="modal-title">Quick Review</h3>
+                    </div>
+        
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-md-6 product_img">
+                            <img src="{{item.game.img}}" class="img-responsive">
+                        </div>
+                        <div class="col-md-6 product_content">
+                            <h4>{{item.game.title}}</h4>
+                            <div class="rating">
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                (10 reviews)
+                            </div>
+                            <p>Platform: {{item.game.platform}}</p>
+                            <p>Release Year: {{item.game.releaseYear}}</p>
+                            <h3 class="cost"><span class="glyphicon glyphicon-usd"></span>{{item.game.price}}</h3>
+                            <div class="space-ten"></div>
+                            <div class="btn-ground">
+                              <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+  </div>
+</div>
+

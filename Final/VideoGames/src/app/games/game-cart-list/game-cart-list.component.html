@@ -1,0 +1,7 @@
+<h6 *ngIf="listOfCart.length > 0">
+  <h5>Cart list:</h5>
+  <div *ngFor="let each of listOfCart">
+    {{each.game.title}}
+  </div>
+  <button (click)="submitCurrentCart()" routerLink="/cart">Check out</button>
+</h6>

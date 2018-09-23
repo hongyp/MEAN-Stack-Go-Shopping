@@ -1,0 +1,87 @@
+<div class="checkout_pipeline">
+  <br>
+  <div class="row">
+    <div class="process">
+      <div class="process-row nav nav-tabs">
+        <div class="process-step">
+          <button type="button" class="btn btn-info btn-circle" id="payment_info_tab_select" data-toggle="tab"><i class="glyphicon glyphicon-credit-card"></i></button>
+          <p><small>Payment Information</small></p>
+        </div>
+
+        <div class="process-step">
+          <button type="button" class="btn btn-default btn-circle" id="review_tab_select" data-toggle="tab" routerLink="orderConfirmation"><i class="glyphicon glyphicon-usd"></i></button>
+          <p><small>Review And Purchase</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page_content row">
+  <!-- center column -->
+  <div class="leftcol col-md-8" id="cart_area">
+    <div class="checkout_content_box checkout_main">
+      <form name="payment_info_form" id="payment_info_form" (submit)="canNextStep()">
+        <div class="checkout_tab" id="payment_info_tab" style="display:block">
+          <div class="checkout_content">
+            <!-- cancel_pending_verification -->
+            <div class="form_row" id="cancel_pending_verification" style="display:none;">
+              <div class="cancel_pending_check">
+                <input type="checkbox" name="cancel_pending" value="1" id="cancel_pending">
+              </div>
+              <!-- cancel_pending_notes -->
+              <div class="cancel_pending_notes">
+                <label class="highlight_on_error" id="cancel_pending_label" for="cancel_pending" style="display:inline;">
+                  "Payment was not completed. Continue with this current transaction!"
+                </label>
+                <div>"Need Help? Please Contact "
+                  <a href="" target="blank" rel="noreferrer">Steam Support</a>
+                </div>
+              </div>
+              <br>
+            </div>
+
+            <br>
+            <app-payment-method (emitPaymentForm)="paymentDetailForm($event)"></app-payment-method>
+            
+            <app-billing-information (emitBillingForm)="billingInfoForm($event)"></app-billing-information>
+            
+            <button type="submit" class="btn btn-success btn-lg btn-block">Continue</button>
+            </div>
+          </div>
+        </form>
+      </div>
+  </div>
+
+    <!-- end center column/right column -->
+    <div class="rightcol col-md-4">
+      <div id="col_right_payment_info" class="package2" style="display:block">
+        <div class="stripe"></div>
+        <h3 class="pheader2">Payment Methods</h3>
+        <div class="block_content paymentWrap">
+          <p>We accept the following secure payment methods:</p>
+          <div class="btn-group paymentBtnGroup btn-group-justified" data-toggle="buttons">
+              <label class="btn paymentMethod" [class.active]="activeMethod('Visa')">
+                <div class="method visa"></div>
+                  <!-- <input type="radio" name="options" checked>  -->
+              </label>
+              <label class="btn paymentMethod" [class.active]="activeMethod('MasterCard')">
+                <div class="method master-card"></div>
+                  <!-- <input type="radio" name="options">  -->
+              </label>
+              <label class="btn paymentMethod" [class.active]="activeMethod('American Express')">
+                <div class="method amex"></div>
+                  <!-- <input type="radio" name="options"> -->
+              </label>
+               <label class="btn paymentMethod" [class.active]="activeMethod('Discover')">
+                 <div class="method discover"></div>
+                  <!-- <input type="radio" name="options">  -->
+              </label>
+          </div>   
+          <div style="clear:left;"></div> 
+          <br>
+          <p>When you submit your payment information your data is protected by Secure Socket Layer.</p>
+        </div>
+      </div>
+    </div> 
+</div>

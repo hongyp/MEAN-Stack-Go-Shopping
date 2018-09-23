@@ -1,0 +1,17 @@
+<div class="action" *ngIf="game" style="padding-bottom: 20px">
+  <div class="section" style="padding-bottom:20px;">
+    <!--<div>-->
+      <!--&lt;!&ndash;<div class="btn-minus"><span class="glyphicon glyphicon-minus"></span></div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<input [(ngModel)]="gameneedadd.quantity" plaveholder="number"/>&ndash;&gt;-->
+
+      <!--&lt;!&ndash;<div class="btn-plus"><span class="glyphicon glyphicon-plus"></span></div>&ndash;&gt;-->
+    <!--</div>-->
+  </div>
+  <button class="add-to-cart btn btn-default" type="button" (click)="onAddToCart()">add to cart</button>
+  <button class="like btn btn-default" type="button" (click)="onAddToWishlist()"><span class="fa fa-heart"></span></button>
+</div>
+<div class="alert alert-success alert-dismissable" id="alertsuccess" style="display: none">
+  {{ alertcontent }}
+</div>
+
+<!--<div class="alert alert-warning" role="alert">...</div>-->
